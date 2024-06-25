@@ -1,7 +1,7 @@
 <template>
     <header class="header container" :class="{ hidden: !isMobile }" role="banner">
         <p class="logo">
-            <router-link :to="{ path: '/' }">NuxtWeatherReport</router-link>
+            <NuxtLink to="/">NuxtWeatherReport</NuxtLink>
         </p>
         <!-- <ul class="header__menu" role="menu">
             <li role="menuitem">
