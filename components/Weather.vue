@@ -3,7 +3,7 @@
 import { ref } from 'vue';
 
 const weather = ref(null);
-const city = ref('Barnsley');
+const city = ref('');
 
 async function getWeather() {
     console.log("This is the city: " + city.value);
@@ -12,10 +12,15 @@ async function getWeather() {
     // Use the weather data here
     weather.value = data;
 }
+
+function clearWeather() {
+    weather.value = null;
+}
+
 </script>
 
 <template>
-    <div>
+    <div class="container">
         <h1>Weather</h1>
         <input v-model="city" type="text" placeholder="Enter a city" />
         <div v-if="weather">
@@ -27,40 +32,44 @@ async function getWeather() {
 
         </div>
         <button @click="getWeather">Get Weather</button>
+        <button class="clear" @click="clearWeather">Clear</button>
     </div>
 </template>
 
 <style scoped>
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 button {
-    padding: 0.5rem;
-    background-color: #333;
-    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
     border: none;
-    width: 100%;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #444;
+.clear {
+    background-color: #dc3545;
 }
 
+
 button:active {
-    background-color: #555;
+    background-color: #0056b3;
 }
 </style>
