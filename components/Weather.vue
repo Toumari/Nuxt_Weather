@@ -23,7 +23,7 @@ function clearWeather() {
     <div class="container">
         <h1>Weather</h1>
         <input v-model="city" type="text" placeholder="Enter a city" />
-        <div v-if="weather">
+        <div v-if="weather" class="results">
 
 
             <h2>{{ weather.name }}</h2>
@@ -37,14 +37,25 @@ function clearWeather() {
 </template>
 
 <style scoped>
+h1 {
+    color: #fff;
+}
+
 .container {
+    color: #fff;
+    max-width: 600px;
+    margin-top: 15rem;
+    padding-inline: 20;
+    margin-inline: auto;
+    border-radius: 5px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    background-color: white;
+}
+
+.results {
+    margin-block: 2rem;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input {

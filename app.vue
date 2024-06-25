@@ -1,19 +1,20 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
+    <Header />
     <Weather />
   </div>
 </template>
 
+<script setup>
+import '~/assets/css/modern-normalize.css'
+import '~/assets/css/style.css'
+import '~/assets/css/utils.css'
+
+</script>
+
 <style>
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #333;
 }
 </style>
