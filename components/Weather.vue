@@ -21,18 +21,22 @@ function clearWeather() {
 
 <template>
     <div class="container">
-        <h1>Weather</h1>
-        <input v-model="city" type="text" placeholder="Enter a city" />
-        <div v-if="weather" class="results">
+        <div class="weather-co">
 
 
-            <h2>{{ weather.name }}</h2>
-            <p>{{ Math.round(weather.main.temp) }}°C</p>
-            <p>{{ weather.weather[0].description }}</p>
+            <h1>Weather</h1>
+            <input v-model="city" type="text" placeholder="Enter a city" />
+            <div v-if="weather" class="results">
 
+
+                <h2>{{ weather.name }}</h2>
+                <p>{{ Math.round(weather.main.temp) }}°C</p>
+                <p>{{ weather.weather[0].description }}</p>
+
+            </div>
+            <button @click="getWeather">Get Weather</button>
+            <button class="clear" @click="clearWeather">Clear</button>
         </div>
-        <button @click="getWeather">Get Weather</button>
-        <button class="clear" @click="clearWeather">Clear</button>
     </div>
 </template>
 
@@ -43,14 +47,18 @@ h1 {
 
 .container {
     color: #fff;
-    max-width: 600px;
     margin-top: 15rem;
     padding-inline: 20;
     margin-inline: auto;
     border-radius: 5px;
     text-align: center;
+}
+
+.weather-co {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
+    margin-inline: auto;
 }
 
 .results {

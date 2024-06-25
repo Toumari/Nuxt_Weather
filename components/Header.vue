@@ -1,24 +1,17 @@
 <template>
     <header class="header container" :class="{ hidden: !isMobile }" role="banner">
         <p class="logo">
-            <router-link :to="{ path: '/' }">Bourne</router-link>
+            <router-link :to="{ path: '/' }">NuxtWeatherReport</router-link>
         </p>
-        <ul class="header__menu" role="menu">
+        <!-- <ul class="header__menu" role="menu">
             <li role="menuitem">
-                <router-link :to="{ path: '/', hash: '#about' }">About</router-link>
+                <NuxtLink to="/about">About</NuxtLink>
             </li>
-            <li role="menuitem">
-                <router-link :to="{ name: 'home', hash: '#casestudy' }">Testimonial</router-link>
-            </li>
-            <li role=menuitem>
-                <router-link :to="{ name: 'home', hash: '#contact' }">Contact</router-link>
-            </li>
-
-        </ul>
-        <button aria-label="Toggle Mobile Navigation" class="header__bars" id="header__bars" @click="toggleNav"
+        </ul> -->
+        <!-- <button aria-label="Toggle Mobile Navigation" class="header__bars" id="header__bars" @click="toggleNav"
             aria-expanded="false" aria-controls="mobile-nav">
             {{ isMobile ? 'X' : '☰' }}
-        </button>
+        </button> -->
         <a href="#main" class="skip-link">Skip to Main Content</a>
     </header>
     <div v-if="isMenuOpen" class="mobile-nav" :class="{ hidden: !isMobile }" role="navigation" id="mobile-nav">
@@ -26,17 +19,6 @@
             <ul class="mobile-nav__menu" role="menu">
                 <li class="mobile__nav-link" role="menuitem">
                     <router-link :to="{ path: '/' }" @click.prevent=toggleMobile>Home</router-link>
-                </li>
-                <li class="mobile__nav-link" role="menuitem">
-                    <router-link :to="{ path: '/', hash: '#about' }" @click.prevent=toggleMobile>About</router-link>
-                </li>
-                <li class="mobile__nav-link" role="menuitem">
-                    <router-link :to="{ name: 'home', hash: '#casestudy' }"
-                        @click.prevent=toggleMobile>Testimonial</router-link>
-                </li>
-                <li class="mobile__nav-link" role="menuitem">
-                    <router-link :to="{ name: 'home', hash: '#contact' }"
-                        @click.prevent=toggleMobile>Contact</router-link>
                 </li>
             </ul>
         </nav>
