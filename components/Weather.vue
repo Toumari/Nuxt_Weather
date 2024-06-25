@@ -4,17 +4,28 @@ import { ref } from 'vue';
 
 const weather = ref(null);
 const city = ref('');
+const isError = ref(false);
+const error = ref(null);
 
 async function getWeather() {
+    isError.value = false;
+    clearWeather();
     console.log("This is the city: " + city.value);
     const response = await fetch(`/api/weather?city=${city.value}`);
     const data = await response.json();
+    console.log(data);
+    if (data.cod != '200') {
+        isError.value = true;
+        error.value = data.message;
+        return;
+    }
     // Use the weather data here
     weather.value = data;
 }
 
 function clearWeather() {
     weather.value = null;
+    isError.value = false;
 }
 
 </script>
@@ -22,17 +33,16 @@ function clearWeather() {
 <template>
     <div class="container">
         <div class="weather-co">
-
-
             <h1>Weather</h1>
             <input v-model="city" type="text" placeholder="Enter a city" />
             <div v-if="weather" class="results">
-
-
                 <h2>{{ weather.name }}</h2>
+                <h2>{{ weather.main.temp }}</h2>
                 <p>{{ Math.round(weather.main.temp) }}°C</p>
                 <p>{{ weather.weather[0].description }}</p>
-
+            </div>
+            <div v-if="isError">
+                <p class="error">{{ error }}</p>
             </div>
             <button @click="getWeather">Get Weather</button>
             <button class="clear" @click="clearWeather">Clear</button>
@@ -43,6 +53,10 @@ function clearWeather() {
 <style scoped>
 h1 {
     color: #fff;
+}
+
+.error {
+    color: red;
 }
 
 .container {
