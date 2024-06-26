@@ -10,9 +10,7 @@ const error = ref(null);
 async function getWeather() {
     isError.value = false;
     clearWeather();
-    console.log("This is the city: " + city.value);
     const response = await fetch(`/api/weather?city=${city.value}`);
-    const data = await response.json();
     console.log(data);
     if (data.cod != '200') {
         isError.value = true;
@@ -37,7 +35,7 @@ function clearWeather() {
             <input v-model="city" type="text" placeholder="Enter a city" />
             <div v-if="weather" class="results">
                 <h2>{{ weather.name }}</h2>
-                <img class="img" :src="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'" />
+                <img class="img" :src="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'" />
                 <p>{{ Math.round(weather.main.temp) }}°C</p>
                 <p>{{ weather.weather[0].description }}</p>
             </div>
